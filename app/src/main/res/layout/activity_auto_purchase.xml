@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+                name="setPresenter"
+                type="com.koinwork.test.ui.autopurchase.AutoPurchasePresenter"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#20999999">
+
+        <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/card_expnadable"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hw50"
+                android:layout_marginStart="@dimen/hw0"
+                android:layout_marginLeft="@dimen/hw0"
+                android:layout_marginTop="@dimen/hw0"
+                android:layout_marginEnd="@dimen/hw0"
+                android:layout_marginRight="@dimen/hw0"
+                app:title="Simple"
+                app:inner_view="@layout/inner_grade"
+                app:expandOnClick="true"
+                app:animationDuration="300"
+                app:startExpanded="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

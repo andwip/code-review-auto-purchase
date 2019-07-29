@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.moallemi.advanced-build-version'
+import org.moallemi.gradle.internal.VersionCodeType
+
+advancedVersioning {
+
+    nameOptions {
+        versionMajor 1
+        versionMinor 0
+        versionPatch 0
+    }
+
+    codeOptions {
+        versionCodeType VersionCodeType.AUTO_INCREMENT_ONE_STEP
+        dependsOnTasks 'debug', 'release', 'assemble'
+    }
+
+    outputOptions {
+        renameOutput true
+        nameFormat "koinwork-test-\$buildType-\$versionName(\$versionCode)"
+    }
+}
+
+android {
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.koinwork.test"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "release_channel"
+    productFlavors {
+        develop {
+            dimension "release_channel"
+            applicationId devId
+            versionCode advancedVersioning.versionCode
+            versionName advancedVersioning.versionName
+            minSdkVersion sdkVersion.toInteger()
+            targetSdkVersion targetVersion.toInteger()
+            manifestPlaceholders = [appIcon: devAppIcon]
+        }
+
+        production {
+            dimension "release_channel"
+            applicationId prodId
+            versionCode advancedVersioning.versionCode
+            versionName advancedVersioning.versionName
+            minSdkVersion sdkVersion.toInteger()
+            targetSdkVersion targetVersion.toInteger()
+            renderscriptTargetApi renderscript.toInteger()
+            manifestPlaceholders = [appIcon: prodAppIcon]
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    configurations.all { exclude group: 'com.android.support', module: 'support-v13' }
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testImplementation Deps.junit
+    implementation Deps.constraint_layout
+    implementation Deps.support_cardview
+    implementation Deps.support_appcompat
+    implementation Deps.support_recyclerview
+    implementation Deps.support_design
+    implementation Deps.gson
+    implementation Deps.multidex
+    implementation Deps.glide
+    implementation Deps.dagger
+    implementation Deps.rxBindingDesign
+    implementation Deps.easyprefs
+    implementation Deps.expandable_cardview
+
+    kapt Deps.glide_compiler
+    kapt Deps.dagger_compiler
+    kapt Deps.dagger_android_processor
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+}
