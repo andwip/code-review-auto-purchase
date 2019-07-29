@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.alespero:expandable-cardview:0.8@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0a10b6a74f4b57a7ffa5387d4d77b96e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0a10b6a74f4b57a7ffa5387d4d77b96e/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alespero/expandable-cardview/0.8/b56fdf62e4e6a338f8a8109ed972a44365d0d4f2/expandable-cardview-0.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,1 +1,1 @@
-/Users/prasetya/Documents/koinworktest/buildSrc/build/classes/kotlin/main/Deps.class:/Users/prasetya/Documents/koinworktest/buildSrc/build/classes/kotlin/main/Versions.class
+/Users/prasetya/Documents/code-review-auto-purchase/buildSrc/build/classes/kotlin/main/Deps.class:/Users/prasetya/Documents/code-review-auto-purchase/buildSrc/build/classes/kotlin/main/Versions.class
